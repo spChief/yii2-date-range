@@ -1124,6 +1124,7 @@
 
             this.oldStartDate = this.startDate.clone();
             this.oldEndDate = this.endDate.clone();
+            this.oldInputValue = this.element.val();
             this.previousRightTime = this.endDate.clone();
 
             this.updateView();
@@ -1143,7 +1144,7 @@
             }
 
             //if a new date range was selected, invoke the user callback function
-            if (this.startDate != this.oldStartDate || this.endDate != this.oldEndDate)
+            if (!(this.oldInputValue != '' && this.element.val() == '') && (this.startDate != this.oldStartDate || this.endDate != this.oldEndDate))
                 this.callback(this.startDate.clone(), this.endDate.clone(), this.chosenLabel);
 
             //if picker is attached to a text input, update it
